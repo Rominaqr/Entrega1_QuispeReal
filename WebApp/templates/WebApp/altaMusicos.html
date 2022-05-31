@@ -1,0 +1,41 @@
+{% extends "WebApp/index.html" %} 
+{% load static i18n%} 
+{% block main %}
+
+<h1>Ingresar Datos Músicos</h1>
+
+<div class="container px-4 px-lg-5" style=" min-height: 70vh;">
+    {% if messages %}
+
+    <div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %} style="background-color:aquamarine; font-size:20px;">{{ message }}</div>
+    {% endfor %}
+    </div>
+    {% endif %}
+    
+    <p></p>
+    <p></p>
+        <form method="post">
+           {% csrf_token %} 
+           {% for field in form %}
+            
+                <div>
+                    {{ field.errors }}
+                    <!--{{ field.label_tag }} -->
+                    <label for="{{ field.id_for_label }}" style="font-weight:bold">{{ field.label }}</label>
+                    {{ field }}
+                    <p></p>
+                </div>
+                   {% endfor %}
+                <div>   
+                    <p></p>
+                    <p>
+                    <button class="btn btn-primary" button_type="submit">Guardar</button>
+                    </p>
+                </div>
+        </form>
+     
+</div>
+
+{% endblock %}

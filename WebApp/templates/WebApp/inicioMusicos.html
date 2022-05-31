@@ -1,0 +1,21 @@
+{% extends "WebApp/index.html" %} 
+{% load static i18n%} 
+{% block main %}
+
+<h1>Músicos</h1>
+
+<div class="container px-4 px-lg-5" style=" min-height: 70vh;">
+    
+
+
+    <div class="row">
+        <div class="col">
+          <div class="btn btn-primary"><a class="btn btn-primary btn-sm" href="{% url 'musicosIngresar' %}">Añadir</a></div>
+          <div class="btn btn-primary"><a class="btn btn-primary btn-sm" href="{% url 'buscarMusico' %}">Buscar</a></div>
+        </div>
+    </div> 
+
+   
+</div>
+
+{% endblock %}

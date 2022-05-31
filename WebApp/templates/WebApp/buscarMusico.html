@@ -1,0 +1,84 @@
+{% extends "WebApp/index.html" %} 
+{% load static i18n%} 
+{% block main %}
+
+<h1>Buscar</h1>
+
+<div class="container px-4 px-lg-5" style=" min-height: 70vh;">
+    {% if messages %}
+
+    <div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %} style="background-color:aquamarine; font-size:20px;">{{ message }}</div>
+    {% endfor %}
+    </div>
+    {% endif %}
+    
+    <p></p>
+    <p></p>
+        <form method="get">
+           {% csrf_token %} 
+           {% for field in form_busqueda %}
+            
+                <div>
+                    {{ field.errors }}
+                    <!--{{ field.label_tag }} -->
+                    <label for="{{ field.id_for_label }}" style="font-weight:bold">{{ field.label }}</label>
+                    {{ field }}
+                    <p></p>
+                </div>
+           {% endfor %}
+                <div>   
+                    <p></p>
+                    <p>
+                    <button class="btn btn-primary" button_type="submit">Buscar</button>
+                    </p>
+                </div>
+             
+        </form>
+
+        {% if resultados_busqueda %}
+        <div>
+        <h2>Resultados de la busqueda</h2>
+        </div>  
+        <div class="row">
+            <div class="col">
+                {% if musico %}
+                <table class="table">
+                    <thead>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Instrumento</th>
+                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Fecha Fallecimiento</th>
+                    </thead>
+                
+                    {% for p in musico %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{p.id}} </th>
+                            <td> {{p.nombre}} </td>
+                            <td> {{p.apellido}} </td>
+                            <td> {{p.instrumento}} </td>
+                            <td> {{p.fecha_nacimiento}} </td>
+                            <td> {{p.fecha_fallecimiento}} </td>
+                            
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+                {% else %}
+                    <p>No existen datos cargados.</p>
+                {% endif %}
+            </div>
+          </div> 
+        {% else %}
+            {%if form_busqueda.field != '' %}
+            <p>No se encontró información para el nombre buscado.</p>
+            {%endif%}
+        {%endif%} 
+     
+</div>
+
+{% endblock %}

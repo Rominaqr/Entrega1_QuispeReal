@@ -1,0 +1,46 @@
+{% extends "WebApp/index.html" %} 
+{% load static i18n%} 
+{% block main %}
+
+<h1>Registrar Datos Usuario</h1>
+
+<div class="container px-4 px-lg-5" style=" min-height: 70vh;">
+    <p></p>
+    <p></p>
+        <form  method="post">
+           {% csrf_token %} 
+           {% if messages %}
+
+           <div class="messages">
+           {% for message in messages %}
+           <div {% if message.tags %} class="{{ message.tags }}"{% endif %} style="background-color:aquamarine; font-size:20px;">{{ message }}</div>
+           {% endfor %}
+           </div>
+       
+           {% endif %}
+
+           {% for field in form %}
+            
+                <div>
+                    <!--{{ field.label_tag }} -->
+                    {% if field.label != 'Idusuario'%}
+                    <label for="{{ field.id_for_label }}" style="font-weight:bold">{{ field.label }}</label>
+                    {% endif %}
+                    {{ field }}
+                    {{ field.errors }}
+                    
+                    <p></p>
+                </div>
+                   {% endfor %}
+                <div>   
+                    <p></p>
+                    <p>
+                    <button class="btn btn-primary" button_type="submit">Guardar</button>
+                    </p>
+                </div>
+        </form>
+     
+</div>
+
+
+{% endblock %}
