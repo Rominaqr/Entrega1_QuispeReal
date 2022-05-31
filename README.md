@@ -24,7 +24,7 @@ Hacer click en el siguiente link para correr el inicio de la pagina web:
 
 [http://127.0.0.1:8000/WebApp/index/](http://127.0.0.1:8000/WebApp/index/)
 
-La funcionalidad se encuentra sobre el Menu:
+La funcionalidad se encuentra sobre el Menú:
 
 Home - Index.html: vista general de datos insertados sobre el modelo de la clase Musicos. Queda pendiente para la proxima entrega incorporar funcionalidad sobre los botones ("Leer Más" y "Más info").
 
